@@ -15,7 +15,7 @@ pipeline {
       
       post { 
               failure { 
-                  echo 'E' andato storto'
+                  echo 'E andato storto'
               }
           }
         
@@ -24,7 +24,7 @@ pipeline {
 	        node { label 'production' }
 	      }
 	      steps {
-	        sh 'docker run -d -p 82:80 --name nginxProva2 nginx'
+	        sh 'hostname'
 	      }
 	    }
 	  }

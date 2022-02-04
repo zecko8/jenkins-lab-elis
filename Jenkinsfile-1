@@ -1,12 +1,15 @@
 pipeline {
     agent {
-        docker { image 'ubuntu' }
+        docker { image 'ubuntu' 
+                 label 'production'
+               }
     }
 
     stages {
         stage('dentro il container') {
             steps {
                 sh 'hostname'
+                sh 'pwd'
             }
         }
     }

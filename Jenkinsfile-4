@@ -1,0 +1,14 @@
+pipeline {
+    agent { 
+        docker { image 'python' }
+    }
+    
+    stages {
+        stage('Test') {
+            steps {
+                sh 'wget https://raw.githubusercontent.com/zecko8/jenkins-lab-elis/main/test.py'
+                sh 'python test.py'
+            }
+        }
+    }
+}

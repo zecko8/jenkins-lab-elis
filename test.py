@@ -1,1 +1,1 @@
-print("CIAO MONDO!")
+prikkjjjnt("CIAO MONDO!")

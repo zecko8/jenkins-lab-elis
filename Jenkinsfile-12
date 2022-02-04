@@ -1,0 +1,31 @@
+pipeline {
+	  agent none
+	  stages {
+	    stage('Test') {
+	      agent {
+	         docker { image 'nginx' 
+                      label 'test'
+             }
+               
+	      }
+	      steps {
+	        sh 'echo faccio test'
+	      }
+	    }
+      
+      post { 
+              failure { 
+                  echo 'E' andato storto'
+              }
+          }
+        
+	    stage('Deploy') {
+	      agent {
+	        node { label 'production' }
+	      }
+	      steps {
+	        sh 'docker run -d -p 82:80 --name nginxProva2 nginx'
+	      }
+	    }
+	  }
+	}

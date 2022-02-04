@@ -1,14 +1,24 @@
 pipeline {
-    agent { 
-        docker { image 'nginx' }
-    }
-    
-    stages {
-        stage('Test') {
-            steps {
-                sh 'echo ciao'
+	  agent none
+	  stages {
+	    stage('Test') {
+	      agent {
+	         docker { image 'nginx' 
+                      label 'test'
+             }
                
-            }
-        }
-    }
-}
+	      }
+	      steps {
+	        sh 'echo faccio test'
+	      }
+	    }
+	    stage('Deploy') {
+	      agent {
+	        node { label 'production' }
+	      }
+	      steps {
+	        sh 'docker run -d -p 81:80 --name nginxProva nginx'
+	      }
+	    }
+	  }
+	}

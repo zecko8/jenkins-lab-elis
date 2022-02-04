@@ -1,0 +1,22 @@
+pipeline {
+    agent { 
+        docker { image 'openjdk' }
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'wget https://raw.githubusercontent.com/zecko8/jenkins-lab-elis/main/provaapp.java'
+                sh 'javac provaapp.java '
+            }
+            
+        }
+        stage('RUN') {
+            steps {
+                sh 'java provaapp'
+
+            }
+            
+        }
+    }
+}

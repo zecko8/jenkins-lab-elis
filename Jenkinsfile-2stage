@@ -1,0 +1,21 @@
+pipeline {
+	  agent none
+	  stages {
+	    stage('Test’) {
+	      agent {
+	         node { label 'test' }  
+	      }
+	      steps {
+	        sh ‘echo questo è un test’
+	      }
+	    }
+	    stage(‘Deploy’) {
+	      agent {
+	        node { label 'production' }
+	      }
+	      steps {
+	        sh ‘echo questo è un deploy’
+	      }
+	    }
+	  }
+	}

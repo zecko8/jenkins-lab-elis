@@ -1,20 +1,20 @@
 pipeline {
 	  agent none
 	  stages {
-	    stage('Test’) {
+	    stage('Test') {
 	      agent {
 	         node { label 'test' }  
 	      }
 	      steps {
-	        sh ‘echo questo è un test’
+	        sh 'echo questo è un test'
 	      }
 	    }
-	    stage(‘Deploy’) {
+	    stage('Deploy') {
 	      agent {
 	        node { label 'production' }
 	      }
 	      steps {
-	        sh ‘echo questo è un deploy’
+	        sh 'echo questo è un deploy'
 	      }
 	    }
 	  }
